@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud & DevOps Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0f766e;
+            --primary-dark: #134e4a;
+            --accent: #0891b2;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --border: #e5e7eb;
+            --code-bg: #1f2937;
+            --code-text: #e5e7eb;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --text-primary: #f3f4f6;
+                --text-secondary: #d1d5db;
+                --bg-light: #111827;
+                --bg-white: #1f2937;
+                --border: #374151;
+                --code-bg: #0f172a;
+                --code-text: #e2e8f0;
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-primary);
+            background: var(--bg-light);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: var(--bg-white);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+            animation: slideDown 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.95;
+            animation: slideUp 0.8s ease 0.2s backwards;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: slideUp 0.8s ease 0.4s backwards;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+            border-color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border-color: white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        section > .container > p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin-bottom: 3rem;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .project-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .project-card .role {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .tech-badge {
+            display: inline-block;
+            background: var(--bg-light);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid var(--border);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-category {
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 2rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-item {
+            margin-bottom: 1rem;
+        }
+
+        .skill-item strong {
+            display: block;
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .skill-item span {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Experience Timeline */
+        .experience-item {
+            padding: 2rem;
+            background: var(--bg-white);
+            border-left: 4px solid var(--accent);
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .experience-item h3 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-item .company {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item .dates {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .experience-item ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .experience-item li {
+            color: var(--text-secondary);
+            margin-bottom: 0.7rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .experience-item li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .about-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-white);
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Scroll reveal animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        code {
+            background: var(--code-bg);
+            color: var(--code-text);
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.3rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        a:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <h1>Portfolio</h1>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Cloud & DevOps Architect</h1>
+            <p>10+ years building scalable, secure cloud infrastructure and automation solutions for enterprise clients</p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>Experienced IT professional specializing in cloud infrastructure, DevOps practices, and cloud-native architecture.</p>
+            
+            <div class="about-content">
+                <div>
+                    <p>With over a decade of experience, I've architected and managed cloud environments for Fortune 500 companies including Mercedes-Benz, Siemens, and ZF Group. My expertise spans multi-cloud platforms (AWS, Azure), infrastructure automation, CI/CD pipelines, and production-grade Kubernetes orchestration.</p>
+                    
+                    <p>I'm passionate about building reliable, scalable systems that enable teams to deploy with confidence. I focus on security-first architecture, operational excellence, and continuous improvement.</p>
+
+                    <p>Currently, I'm exploring AI-powered infrastructure solutions, MLOps, and event-driven architectures to solve complex enterprise challenges.</p>
+                </div>
+
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Cloud Platforms</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Technologies</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">Major Projects</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2>Core Competencies</h2>
+            <p>A comprehensive toolkit built through hands-on experience with enterprise-scale systems.</p>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>☁️ Cloud Platforms</h3>
+                    <div class="skill-item">
+                        <strong>AWS</strong>
+                        <span>ECS, EKS, Lambda, RDS, S3, IAM, VPC, CloudWatch</span>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Azure</strong>
+                        <span>AKS, App Service, Storage, Cosmos DB, DevOps</span>
+                    </div>
+                    <div class="skill-item">
+                        <strong>OpenShift</strong>
+                        <span>Container orchestration, cluster management</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🔧 DevOps & Automation</h3>
+                    <div class="skill-item">
+                        <strong>Infrastructure as Code</strong>
+                        <span>Terraform, Crossplane, CloudFormation</span>
+                    </div>
+                    <div class="skill-item">
+                        <strong>CI/CD</strong>
+                        <span>GitLab CI, GitHub Actions, Azure DevOps, ArgoCD</span>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Container</strong>
+                        <span>Docker, Kubernetes (EKS, AKS), Helm</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>📊 Observability</h3>
+                    <div class="skill-item">
+                        <strong>Monitoring</strong>
+                        <span>Prometheus, Grafana, Datadog, CloudWatch</span>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Logging</strong>
+                        <span>ELK Stack, Splunk, Kibana, Loki</span>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Alerting</strong>
+                        <span>Opsgenie, Alertmanager, PagerDuty</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🔐 Security & Compliance</h3>
+                    <div class="skill-item">
+                        <strong>Cloud Security</strong>
+                        <span>Aqua Security, Wiz, WAF, encryption</span>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Access Control</strong>
+                        <span>IAM, RBAC, SAML, OAuth, PKI</span>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Compliance</strong>
+                        <span>PCI-DSS, GDPR, HIPAA, SOC 2</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>💻 Programming</h3>
+                    <div class="skill-item">
+                        <strong>Languages</strong>
+                        <span>Go, Python, Java, Bash, SQL</span>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Frameworks</strong>
+                        <span>Apache Airflow, Rasa, FastAPI</span>
+                    </div>
+                    <div class="skill-item">
+                        <strong>ML/AI</strong>
+                        <span>Amazon Bedrock, RAG pipelines, NLU</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🎯 Specializations</h3>
+                    <div class="skill-item">
+                        <strong>Architecture</strong>
+                        <span>High availability, disaster recovery, multi-tenancy</span>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Data</strong>
+                        <span>ETL pipelines, data platforms, event streaming (Kafka)</span>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Team</strong>
+                        <span>Leadership, mentoring, best practices</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <p>Highlights of recent work building enterprise-scale systems.</p>
+
+            <div class="projects-grid">
+                <div class="project-card reveal">
+                    <h3>Mercedes Intelligent Cloud</h3>
+                    <div class="role">Senior Cloud/DevSecOps Consultant</div>
+                    <p>Architected and operated multi-cloud infrastructure (AWS & Azure) serving as the foundational platform for Mercedes' intelligent cloud services. Implemented security-first architecture with real-time threat detection and AI-powered internal developer platform.</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">AWS</span>
+                        <span class="tech-badge">Azure</span>
+                        <span class="tech-badge">Kubernetes</span>
+                        <span class="tech-badge">Terraform</span>
+                        <span class="tech-badge">Go</span>
+                        <span class="tech-badge">Bedrock</span>
+                    </div>
+                </div>
+
+                <div class="project-card reveal">
+                    <h3>Enterprise AI Assistant</h3>
+                    <div class="role">Technical Expert</div>
+                    <p>Built a domain-specific chatbot using Rasa with RAG pipeline over internal documentation. Deployed full MLOps infrastructure including model versioning, automated retraining, and monitoring. Integrated into low-code platform with GitOps-based CI/CD.</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Rasa</span>
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">OpenSearch</span>
+                        <span class="tech-badge">GitLab CI</span>
+                        <span class="tech-badge">ArgoCD</span>
+                        <span class="tech-badge">Kubernetes</span>
+                    </div>
+                </div>
+
+                <div class="project-card reveal">
+                    <h3>Data Platform Architecture</h3>
+                    <div class="role">Data Architect</div>
+                    <p>Designed secure, scalable data platform on OpenShift and Azure. Built end-to-end ETL workflows using Apache Airflow, orchestrating multi-source data ingestion, transformation, and loading. Created Power BI reports for business intelligence.</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Apache Airflow</span>
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">OpenShift</span>
+                        <span class="tech-badge">Azure</span>
+                        <span class="tech-badge">GitLab CI</span>
+                        <span class="tech-badge">Power BI</span>
+                    </div>
+                </div>
+
+                <div class="project-card reveal">
+                    <h3>Multi-Tenant SaaS Infrastructure</h3>
+                    <div class="role">Technical Expert</div>
+                    <p>Provisioned and managed dedicated SaaS cloud infrastructures for banking and insurance clients. Ensured compliance with PCI-DSS, HIPAA, and GDPR. Achieved 99.95% uptime with disaster recovery and business continuity strategies.</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">AWS</span>
+                        <span class="tech-badge">Azure</span>
+                        <span class="tech-badge">Kubernetes</span>
+                        <span class="tech-badge">Terraform</span>
+                        <span class="tech-badge">GitLab</span>
+                        <span class="tech-badge">Compliance</span>
+                    </div>
+                </div>
+
+                <div class="project-card reveal">
+                    <h3>SRE & Kubernetes Operations</h3>
+                    <div class="role">Site Reliability Engineer</div>
+                    <p>Designed production-grade Kubernetes clusters on AWS (EKS). Managed all infrastructure using Terraform. Built continuous deployment pipelines with GitHub Actions and ArgoCD. Implemented zero-downtime deployments and automated recovery.</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">AWS EKS</span>
+                        <span class="tech-badge">Kubernetes</span>
+                        <span class="tech-badge">Terraform</span>
+                        <span class="tech-badge">GitHub Actions</span>
+                        <span class="tech-badge">ArgoCD</span>
+                        <span class="tech-badge">Prometheus</span>
+                    </div>
+                </div>
+
+                <div class="project-card reveal">
+                    <h3>Emergency Management Platform</h3>
+                    <div class="role">Cloud/DevSecOps Consultant</div>
+                    <p>Designed AWS cloud infrastructure and complete observability stack with Prometheus, Grafana, and Alertmanager. Built CI/CD pipelines with GitLab CI and ArgoCD. Implemented event-driven architecture using Apache Kafka.</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">AWS</span>
+                        <span class="tech-badge">GitLab CI</span>
+                        <span class="tech-badge">Prometheus</span>
+                        <span class="tech-badge">Grafana</span>
+                        <span class="tech-badge">Kafka</span>
+                        <span class="tech-badge">ArgoCD</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2>Professional Experience</h2>
+            <p>A timeline of roles, projects, and impact.</p>
+
+            <div style="margin-top: 3rem;">
+                <div class="experience-item">
+                    <h3>Senior Cloud/DevSecOps Consultant</h3>
+                    <div class="company">Mercedes-Benz (via Wevioo/NTT Data)</div>
+                    <div class="dates">May 2024 – Present</div>
+                    <ul>
+                        <li>Manage and operate multi-cloud environments (AWS & Azure) for Mercedes Intelligent Cloud</li>
+                        <li>Architect scalable, secure cloud solutions aligned with enterprise requirements</li>
+                        <li>Maintain critical services (IDP, PKI, DNS) with 99.9%+ uptime</li>
+                        <li>Enhanced cloud security with Aqua Security, Wiz integration, and real-time threat detection via Splunk</li>
+                        <li>Built internal AI assistant using Amazon Bedrock with RAG pipeline over internal documentation</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Site Reliability Engineer</h3>
+                    <div class="company">Nextmobiles (via Wevioo)</div>
+                    <div class="dates">June 2025 – Present</div>
+                    <ul>
+                        <li>Design and maintain production-grade Kubernetes clusters on AWS</li>
+                        <li>Manage AWS infrastructure using Terraform with IaC best practices</li>
+                        <li>Build DevOps pipelines using GitHub Actions and ArgoCD</li>
+                        <li>Ensure system availability, scalability, and automated recovery</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Data Architect</h3>
+                    <div class="company">ZF Group (via Wevioo/NTT Data)</div>
+                    <div class="dates">March 2025 – July 2025</div>
+                    <ul>
+                        <li>Designed secure, scalable data platform on OpenShift and Azure</li>
+                        <li>Built end-to-end ETL workflows using Python and Apache Airflow</li>
+                        <li>Integrated multi-source data ingestion with transformation and loading into MySQL</li>
+                        <li>Created Power BI reports delivering actionable business insights</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Technical Expert Cloud/DevOps</h3>
+                    <div class="company">VERMEG</div>
+                    <div class="dates">January 2019 – April 2024</div>
+                    <ul>
+                        <li>Managed and optimized cloud environments on AWS and Azure</li>
+                        <li>Designed highly available, scalable, and secure cloud infrastructures</li>
+                        <li>Built domain-specific chatbot using Rasa with complete MLOps setup</li>
+                        <li>Provisioned dedicated SaaS infrastructures for banking and insurance clients (PCI-DSS, HIPAA compliant)</li>
+                        <li>Deployed and managed core DevOps tools: GitLab, Nexus, SonarQube</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Senior Java Developer</h3>
+                    <div class="company">VERMEG</div>
+                    <div class="dates">June 2017 – December 2018</div>
+                    <ul>
+                        <li>Designed and deployed Eclipse and Maven plugins</li>
+                        <li>Developed applications using Java, EJB, Wildfly, and Tomcat</li>
+                        <li>Worked with PostgreSQL databases</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Java/J2EE Developer</h3>
+                    <div class="company">SAB2i</div>
+                    <div class="dates">December 2013 – May 2017</div>
+                    <ul>
+                        <li>Developed Eclipse and Maven plugins for internal production teams</li>
+                        <li>Contributed to SAB Banking Core System development</li>
+                        <li>Worked with Java, EJB, Maven, Websphere, DB2, and Oracle</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>Let's Connect</h2>
+            <p>Interested in collaborating or discussing cloud architecture and DevOps practices? Let's talk.</p>
+            
+            <div class="social-links">
+                <a href="https://github.com" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in" target="_blank">LinkedIn</a>
+                <a href="mailto:hello@example.com">Email</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Cloud & DevOps Portfolio. Built with modern web technologies.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
