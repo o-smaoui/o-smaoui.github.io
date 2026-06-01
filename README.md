@@ -2,7 +2,7 @@
 
 Personal portfolio website showcasing experience in cloud infrastructure, DevOps, and site reliability engineering.
 
-🌐 **Live site:** [https://o-smaoui.github.io/omarsmaoui.github.io](https://o-smaoui.github.io/omarsmaoui.github.io)  
+🌐 **Live site:** [https://o-smaoui.github.io/omarsmaoui.github.io/](https://o-smaoui.github.io/o-smaoui.github.io/)  
 💼 **LinkedIn:** [linkedin.com/in/omarsmaoui](https://www.linkedin.com/in/omarsmaoui/)
 
 ---
@@ -11,7 +11,7 @@ Personal portfolio website showcasing experience in cloud infrastructure, DevOps
 
 This is a single-page portfolio built with plain HTML, CSS, and JavaScript — no framework, no build step, no dependencies. It covers:
 
-- Professional experience (Mercedes-Benz, ZF Group, VERMEG, ...)
+- Professional experience (Mercedes-Benz, ZF Group, Siemens, VERMEG, ...)
 - Featured projects (cloud infrastructure, AI/MLOps, data platforms)
 - Core skills (AWS, Azure, Kubernetes, Terraform, CI/CD, observability)
 
